@@ -15,8 +15,8 @@ public record BoxWithBuilder(String label, int width, int height, int depth, Lis
         }
     }
 
-    public BoxWithBuilder withLabel(String label, BoxWithBuilder original) {
-        return new BoxWithBuilder(label, original.width, original.height, original.depth, original.contents);
+    public BoxWithBuilder withLabel(String label) {
+        return new BoxWithBuilder(label, width, height, depth, contents);
     }
 
     public static class Builder {

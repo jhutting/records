@@ -13,10 +13,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class BoxTest {
 
     @Test
-    void happyFlow() {
+    void outOfTheBoxMethods() {
         Box box = new Box("Example", 210, 297, 100, new ArrayList<>());
 
         assertThat(box.hashCode()).isEqualTo(-271068866);
+        assertThat(box).hasToString("Box[label=Example, width=210, height=297, depth=100, contents=[]]");
+        assertThat(box.equals(new Box("Example", 210, 297, 100, new ArrayList<>()))).isTrue();
     }
 
     @Test
