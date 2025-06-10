@@ -17,4 +17,8 @@ record BoxWithSemantics(String label, int width, int height, int depth, List<Ite
     public BoxWithSemantics replaceContents(String newLabel, List<Item> newContents) {
         return new BoxWithSemantics(newLabel, width, height, depth, newContents);
     }
+
+    public BoxWithSemantics replaceContents(List<Item> newContents) {
+        return replaceContents(label, newContents);
+    }
 }
