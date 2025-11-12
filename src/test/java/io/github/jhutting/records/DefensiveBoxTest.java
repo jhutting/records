@@ -1,6 +1,5 @@
 package io.github.jhutting.records;
 
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 
@@ -9,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.slf4j.LoggerFactory.getLogger;
 
 class DefensiveBoxTest {
@@ -38,5 +38,8 @@ class DefensiveBoxTest {
         log.info("{} took {}ns", firstSlowAttempt.label(), Duration.ofNanos(endTime - startTime).toNanos());
         log.info("{} took {}ns", second.label(), Duration.ofNanos(secondEndTime - secondStartTime).toNanos());
         log.info("{} took {}ns", third.label(), Duration.ofNanos(thirdEndTime - thirdStartTime).toNanos());
+
+        assertThat(endTime - startTime).isGreaterThan(secondEndTime - secondStartTime);
+        assertThat(endTime - startTime).isGreaterThan(thirdEndTime - thirdStartTime);
     }
 }
