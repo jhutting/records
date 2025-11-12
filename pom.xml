@@ -12,8 +12,6 @@
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
 
-        <lombok.version>1.18.34</lombok.version> <!-- only added to demo the OpenRewrite recipe -->
-
         <junit.version>5.13.1</junit.version>
         <assertj.version>3.27.3</assertj.version>
 
@@ -23,12 +21,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -64,20 +56,6 @@
                         <version>${rewrite-migrate-java.version}</version>
                     </dependency>
                 </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${lombok.version}</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
             </plugin>
         </plugins>
     </build>
