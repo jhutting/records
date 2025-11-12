@@ -12,12 +12,13 @@
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
 
-        <junit.version>5.13.1</junit.version>
-        <assertj.version>3.27.3</assertj.version>
+        <junit.version>6.0.1</junit.version>
+        <assertj.version>3.27.6</assertj.version>
 
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
-        <rewrite-maven-plugin.version>6.10.0</rewrite-maven-plugin.version>
-        <rewrite-migrate-java.version>3.11.0</rewrite-migrate-java.version>
+        <maven.versions.plugin>2.19.1</maven.versions.plugin>
+        <rewrite-maven-plugin.version>6.23.0</rewrite-maven-plugin.version>
+        <rewrite-migrate-java.version>3.21.2</rewrite-migrate-java.version>
     </properties>
 
     <dependencies>
@@ -38,6 +39,18 @@
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>${maven.versions.plugin}</version>
+                    <configuration>
+                        <ignoredVersions>.*-M.*,.*-alpha.*,.*-beta.*,.*-RC.*</ignoredVersions>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.openrewrite.maven</groupId>
