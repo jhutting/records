@@ -4,10 +4,7 @@ import java.util.List;
 
 record BoxWithSemantics(String label, int width, int height, int depth, List<Item> contents) {
     BoxWithSemantics { // the values are already assigned in the normal constructor!
-        try {
-            contents.addAll(List.of());
-            throw new IllegalArgumentException("Contents should be an immutable list");
-        } catch (UnsupportedOperationException uoe) { } // expected behaviour
+        contents = List.copyOf(contents);
 
         if (label == null || label.isBlank()) { // validate business logic
             throw new IllegalArgumentException("The box requires a filled label");
